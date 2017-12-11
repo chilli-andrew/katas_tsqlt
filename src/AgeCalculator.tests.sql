@@ -88,7 +88,7 @@ BEGIN
 DECLARE @DOB datetime = '1989-05-22'
 DECLARE @CurrentDate datetime = '1990-06-21'
 DECLARE @Result int
-DECLARE @Expected int = 0;
+DECLARE @Expected int = 1;
 	-- Act
 	SELECT @Result = [dbo].[CalculateAge](@DOB, @CurrentDate);
 	-- Assert

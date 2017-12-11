@@ -15,7 +15,7 @@ DECLARE @years int = DATEDIFF(YEAR, @RelativeDOB, @CurrentDate);
 DECLARE @days int = DAY(@CurrentDate) - DAY(@RelativeDOB);
 DECLARE @months int = MONTH(@currentDate) - MONTH(@RelativeDOB);
 	
-	IF ((@months < 0) OR (@months >= 0 AND  @days < 0))
+	IF ((@months < 0) OR (@months = 0 AND  @days < 0))
 		RETURN @years - 1;
 
 	RETURN @years;
