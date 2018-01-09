@@ -100,16 +100,19 @@ GO
 CREATE PROCEDURE [UT_AgeCalc].[test CalculateAge given it's your first birthday and you were born on a leap day]
 AS
 BEGIN
+	-- I am assuming that that the birthday of a person born on 29 Feb in a leap year has there birthday on 28 Feb on a non leap year.
+	-- My choice of 29 Feb as the birthday for a person born on 29 Feb is based on the result returned by the DATEADD sql function
+	-- e.g. DATEADD(year, 1, '2008-02-29') which returns 2009-02-28
+	-- See: https://en.wikipedia.org/wiki/February_29 Born on February 29.
 	-- Arrange
 DECLARE @DOB datetime = '2008-02-29'
-DECLARE @CurrentDate datetime = '2009-03-01'
+DECLARE @CurrentDate datetime = '2009-02-28'
 DECLARE @Result int
 DECLARE @Expected int = 1;
 	-- Act
 	SELECT @Result = [dbo].[CalculateAge](@DOB, @CurrentDate);
 	-- Assert
 	EXEC tSQLt.AssertEquals @Expected, @Result
-
 END
 GO
 

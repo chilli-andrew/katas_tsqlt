@@ -10,7 +10,7 @@ CREATE FUNCTION [dbo].[CalculateAge]
 RETURNS int
 AS
 BEGIN
-DECLARE @RelativeDOB datetime = IIF(day(@DOB) = 29 AND month(@DOB) = 2, @DOB + 1, @DOB);
+DECLARE @RelativeDOB datetime = IIF(day(@DOB) = 29 AND month(@DOB) = 2, @DOB - 1, @DOB);
 DECLARE @years int = DATEDIFF(YEAR, @RelativeDOB, @CurrentDate);
 DECLARE @days int = DAY(@CurrentDate) - DAY(@RelativeDOB);
 DECLARE @months int = MONTH(@currentDate) - MONTH(@RelativeDOB);
